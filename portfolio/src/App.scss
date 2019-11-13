@@ -1,0 +1,56 @@
+.App{
+  display: flex;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 50px;
+  width: 100vw;
+  .LeftPage{
+    background-color: #fff;
+    border: solid 1px #555;
+    width: 50vw;
+    z-index: 10;
+  }
+  .RightPage{
+    background-color: #fff;
+    border: solid 1px #555;
+    width: 50vw;
+    z-index: 11;
+  }
+  .Page0{
+    background-color: #555;
+    height: 100%;
+    width: 100%;
+  }
+  .Page1{
+
+  }
+  .Bookmark{
+    background-color: lightblue;
+    height: 300px;
+    left: 100px;
+    position: absolute;
+    transition: .2s;
+    top: 20px;
+    width: 100px;
+    z-index: 1;
+  }
+
+  .Bookmark:hover{
+    transform: translateY(-10px);
+  }
+
+  .NextpageButton, .PreviouspageButton{
+    background-color: #555;
+    bottom: 25%;
+    display: block;
+    height: 50vh;
+    opacity: .5;
+    top: 25%;
+    position: absolute;
+    width: 50px;
+  }
+
+  .PreviouspageButton{
+    right: 50px;
+  }
+}
