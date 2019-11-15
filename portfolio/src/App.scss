@@ -1,20 +1,28 @@
-.App{
+.Book{
   display: flex;
   box-sizing: border-box;
   height: 100vh;
-  padding: 50px;
+  padding: 50px 50px calc(50px + 5vh) 50px;
   width: 100vw;
   .LeftPage{
     background-color: #fff;
     border: solid 1px #555;
+    border-radius: 5px;
+    box-sizing: border-box;
     width: 50vw;
     z-index: 10;
   }
   .RightPage{
     background-color: #fff;
     border: solid 1px #555;
+    border-radius: 5px;
+    box-sizing: border-box;
     width: 50vw;
     z-index: 11;
+  }
+  //ここから各ページのcss
+  .Padding{
+    padding: 50px;
   }
   .Page0{
     background-color: #555;
@@ -24,6 +32,14 @@
   .Page1{
 
   }
+  .Page3{
+  }
+  .Page99{
+    background-color: #555;
+    height: 100%;
+    width: 100%;
+  }
+  //各ページのcss終わり
   .Bookmark{
     background-color: lightblue;
     height: 300px;
@@ -52,5 +68,49 @@
 
   .PreviouspageButton{
     right: 50px;
+  }
+}
+.BottomMenubar{
+  background-color: #555;
+  bottom: 0;
+  color: #fff;
+  font-size: 2rem;
+  height: 5vh;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+  .InputRange[type=range]{
+    appearance: none;
+    background-color: #fff;
+    border-radius: 6px;
+    height: 5px;
+    transform: rotate(180deg);
+    -webkit-appearance: none;
+    width: 50vw;
+    z-index: 10;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      position: relative;
+      border: 2px solid rgba(0, 0, 0, .7);
+      width: 22px;
+      height: 22px;
+      display: block;
+      background-color: #fff;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+    }
+
+    &:active::-webkit-slider-thumb {
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, .6);
+      transition: .4s;
+    }
   }
 }
