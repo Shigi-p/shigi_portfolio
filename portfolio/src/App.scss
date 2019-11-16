@@ -1,23 +1,27 @@
 .Book{
-  display: flex;
+  display: block;
   box-sizing: border-box;
   height: 100vh;
   padding: 50px 50px calc(50px + 5vh) 50px;
+  text-orientation: upright;
   width: 100vw;
+  writing-mode: vertical-rl;
   .LeftPage{
     background-color: #fff;
     border: solid 1px #555;
-    border-radius: 5px;
+    border-radius: 20px 0 0 20px;
+    box-shadow: 0 10px 0 0 #ddd;
     box-sizing: border-box;
-    width: 50vw;
+    width: 50%;
     z-index: 10;
   }
   .RightPage{
     background-color: #fff;
     border: solid 1px #555;
-    border-radius: 5px;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 10px 0 0 #ddd;
     box-sizing: border-box;
-    width: 50vw;
+    width: 50%;
     z-index: 11;
   }
   //ここから各ページのcss
@@ -41,18 +45,18 @@
   }
   //各ページのcss終わり
   .Bookmark{
-    background-color: lightblue;
-    height: 300px;
-    left: 100px;
-    position: absolute;
-    transition: .2s;
-    top: 20px;
-    width: 100px;
-    z-index: 1;
+    //background-color: lightblue;
+    //height: 300px;
+    //left: 100px;
+    //position: absolute;
+    //transition: .2s;
+    //top: 20px;
+    //width: 100px;
+    //z-index: 1;
   }
 
   .Bookmark:hover{
-    transform: translateY(-10px);
+    //transform: translateY(-10px);
   }
 
   .NextpageButton, .PreviouspageButton{
@@ -63,11 +67,16 @@
     opacity: .5;
     top: 25%;
     position: absolute;
-    width: 50px;
+    transition: .2s;
+    width: 30px;
   }
 
   .PreviouspageButton{
     right: 50px;
+  }
+
+  .NextpageButton:hover, .PreviouspageButton:hover{
+    transform: scale(1.01);
   }
 }
 .BottomMenubar{
@@ -111,6 +120,23 @@
     &:active::-webkit-slider-thumb {
       box-shadow: 0 0 0 4px rgba(255, 255, 255, .6);
       transition: .4s;
+    }
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .Book{
+    padding: 0;
+    .RightPage{
+      display: none;
+    }
+    .LeftPage{
+      border: none;
+      border-radius: 0;
+      width: 100%;
+    }
+    .NextpageButton, .PreviouspageButton{
+      display: none;
     }
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Swipe from 'react-easy-swipe';
 import './App.scss';
 
 class App extends React.Component{
@@ -7,6 +8,7 @@ class App extends React.Component{
     this.state ={
       page: 0,
       maxPage: 9,
+      swipePageValid: false,
     };
     this.pages = this.pages.bind(this);
     this.bookmark = this.bookmark.bind(this);
@@ -14,6 +16,8 @@ class App extends React.Component{
     this.goNextpage = this.goNextpage.bind(this);
     this.goPreviouspage = this.goPreviouspage.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.onSwipeMove = this.onSwipeMove.bind(this);
+    this.onSwipeEnd = this.onSwipeEnd.bind(this);
   }
 
   pages(page){
@@ -34,10 +38,10 @@ class App extends React.Component{
             <h1>目次</h1>
             <hr/>
             <ul>
-              <li>Part1.鴫原俊樹について</li>
-              <li>Part2.大学での暮らし</li>
-              <li>Part3.つくったもの</li>
-              <li>Part4.連絡先</li>
+              <li onClick={() => this.setState({page:3})}>Part1.鴫原俊樹について</li>
+              <li onClick={() => this.setState({page:3})}>Part2.大学での暮らし</li>
+              <li onClick={() => this.setState({page:3})}>Part3.つくったもの</li>
+              <li onClick={() => this.setState({page:3})}>Part4.連絡先</li>
             </ul>
           </div>
         );
@@ -113,19 +117,45 @@ class App extends React.Component{
     })
   }
 
+  onSwipeMove(position, event) {
+    if(parseInt(position.x, 10) > 200 && !this.state.swipePageValid){
+      console.log(`Moved ${position.x} pixels horizontally`, event);
+      this.setState({
+        page: this.state.page + 1,
+        swipePageValid: true,
+      })
+    }else if(parseInt(position.x, 10) < -200 && !this.state.swipePageValid){
+      console.log(`Moved ${position.x} pixels horizontally`, event);
+      this.setState({
+        page: this.state.page - 1,
+        swipePageValid: true,
+      })
+    }
+  }
+
+  onSwipeEnd(){
+    this.setState({
+      swipePageValid: false,
+    })
+  }
+
   render(){
     return (
       <div className="App">
         <div className="Book">
-          {this.bookmark()}
-          <div className="LeftPage">
-            <span className="NextpageButton" onClick={() => this.goNextpage()} />
-            {this.pages(this.state.page + 1)}
-          </div>
-          <div className="RightPage">
-            {this.pages(this.state.page)}
-            <span className="PreviouspageButton" onClick={() => this.goPreviouspage()} />
-          </div>
+          <Swipe
+            onSwipeMove={this.onSwipeMove}
+            onSwipeEnd={this.onSwipeEnd}>
+            {this.bookmark()}
+            <div className="RightPage">
+              {this.pages(this.state.page)}
+              <span className="PreviouspageButton" onClick={() => this.goPreviouspage()} />
+            </div>
+            <div className="LeftPage">
+              <span className="NextpageButton" onClick={() => this.goNextpage()} />
+              {this.pages(this.state.page + 1)}
+            </div>
+          </Swipe>
         </div>
         <div className="BottomMenubar">
           {this.state.page + 1}
