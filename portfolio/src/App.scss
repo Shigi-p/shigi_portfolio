@@ -1,142 +1,270 @@
-.Book{
-  display: block;
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 50px 50px calc(50px + 5vh) 50px;
-  text-orientation: upright;
-  width: 100vw;
-  writing-mode: vertical-rl;
-  .LeftPage{
-    background-color: #fff;
-    border: solid 1px #555;
-    border-radius: 20px 0 0 20px;
-    box-shadow: 0 10px 0 0 #ddd;
-    box-sizing: border-box;
-    width: 50%;
-    z-index: 10;
-  }
-  .RightPage{
-    background-color: #fff;
-    border: solid 1px #555;
-    border-radius: 0 20px 20px 0;
-    box-shadow: 0 10px 0 0 #ddd;
-    box-sizing: border-box;
-    width: 50%;
-    z-index: 11;
-  }
-  //ここから各ページのcss
-  .Padding{
-    padding: 50px;
-  }
-  .Page0{
-    background-color: #555;
-    height: 100%;
-    width: 100%;
-  }
-  .Page1{
-
-  }
-  .Page3{
-  }
-  .Page99{
-    background-color: #555;
-    height: 100%;
-    width: 100%;
-  }
-  //各ページのcss終わり
-  .Bookmark{
-    //background-color: lightblue;
-    //height: 300px;
-    //left: 100px;
-    //position: absolute;
-    //transition: .2s;
-    //top: 20px;
-    //width: 100px;
-    //z-index: 1;
+.App {
+  font-family: 'mplus-1p-regular', sans-serif;
+  .TutorialWrapper {
+    display: none;
   }
 
-  .Bookmark:hover{
-    //transform: translateY(-10px);
-  }
-
-  .NextpageButton, .PreviouspageButton{
-    background-color: #555;
-    bottom: 25%;
+  .Book {
     display: block;
-    height: 50vh;
-    opacity: .5;
-    top: 25%;
-    position: absolute;
-    transition: .2s;
-    width: 30px;
-  }
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 50px 50px calc(50px + 5vh) 50px;
+    text-orientation: upright;
+    user-select: none;
+    width: 100vw;
+    writing-mode: vertical-rl;
 
-  .PreviouspageButton{
-    right: 50px;
-  }
-
-  .NextpageButton:hover, .PreviouspageButton:hover{
-    transform: scale(1.01);
-  }
-}
-.BottomMenubar{
-  background-color: #555;
-  bottom: 0;
-  color: #fff;
-  font-size: 2rem;
-  height: 5vh;
-  position: fixed;
-  text-align: center;
-  width: 100vw;
-  .InputRange[type=range]{
-    appearance: none;
-    background-color: #fff;
-    border-radius: 6px;
-    height: 5px;
-    transform: rotate(180deg);
-    -webkit-appearance: none;
-    width: 50vw;
-    z-index: 10;
-
-    &:focus,
-    &:active {
-      outline: none;
-    }
-
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      position: relative;
-      border: 2px solid rgba(0, 0, 0, .7);
-      width: 22px;
-      height: 22px;
-      display: block;
+    .LeftPage {
       background-color: #fff;
-      border-radius: 50%;
-      -webkit-border-radius: 50%;
+      border: solid 1px #555;
+      border-radius: 20px 0 0 20px;
+      box-shadow: 0 10px 0 0 #ddd;
+      box-sizing: border-box;
+      width: 50%;
+      z-index: 10;
     }
 
-    &:active::-webkit-slider-thumb {
-      box-shadow: 0 0 0 4px rgba(255, 255, 255, .6);
-      transition: .4s;
+    .RightPage {
+      background-color: #fff;
+      border: solid 1px #555;
+      border-radius: 0 20px 20px 0;
+      box-shadow: 0 10px 0 0 #ddd;
+      box-sizing: border-box;
+      width: 50%;
+      z-index: 11;
     }
-  }
-}
 
-@media screen and (max-width:1024px) {
-  .Book{
-    padding: 0;
-    .RightPage{
-      display: none;
-    }
-    .LeftPage{
-      border: none;
-      border-radius: 0;
+    //ここから各ページのcss
+    .Padding {
+      box-sizing: border-box;
+      padding: 50px;
       width: 100%;
     }
-    .NextpageButton, .PreviouspageButton{
-      display: none;
+
+    .Horizontal {
+      text-orientation: mixed;
+      writing-mode: horizontal-tb;
+    }
+
+    .TitleSection {
+      border: solid 1px #555;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 10px;
+      overflow-wrap: break-word;
+      width: 100%;
+    }
+
+    .Flame {
+      border: solid 1px #555;
+      box-sizing: border-box;
+    }
+
+    .Flex {
+      display: flex;
+    }
+
+    .Page0 {
+      background-color: #555;
+      height: 100%;
+      width: 100%;
+    }
+
+    .Page1 {
+    }
+
+    .Page2 {
+      .Page2Flame1 {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    .Page3 {
+      .Page3Flame1 {
+        height: 50%;
+        padding: 10px;
+        margin: 10px 0 10px 0;
+
+        .Img {
+          height: 100%;
+          width: auto;
+        }
+      }
+
+      .Page3Flame2 {
+        height: 50%;
+      }
+    }
+
+    .Page99 {
+      background-color: #555;
+      height: 100%;
+      width: 100%;
+    }
+
+    //各ページのcss終わり
+    .Bookmark {
+      //background-color: lightblue;
+      //height: 300px;
+      //left: 100px;
+      //position: absolute;
+      //transition: .2s;
+      //top: 20px;
+      //width: 100px;
+      //z-index: 1;
+    }
+
+    .Bookmark:hover {
+      //transform: translateY(-10px);
+    }
+
+    .NextpageButton, .PreviouspageButton {
+      background-color: #555;
+      bottom: 25%;
+      display: block;
+      height: 50vh;
+      opacity: .5;
+      top: 25%;
+      position: absolute;
+      transition: .2s;
+      width: 30px;
+    }
+
+    .PreviouspageButton {
+      right: 50px;
+    }
+
+    .NextpageButton:hover, .PreviouspageButton:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  .BottomMenubar {
+    background-color: #555;
+    bottom: 0;
+    color: #fff;
+    font-size: 2rem;
+    height: 5vh;
+    position: fixed;
+    text-align: center;
+    width: 100vw;
+
+    .InputRange[type=range] {
+      appearance: none;
+      background-color: #fff;
+      border-radius: 6px;
+      height: 5px;
+      transform: rotate(180deg);
+      -webkit-appearance: none;
+      width: 50vw;
+      z-index: 10;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        position: relative;
+        border: 2px solid rgba(0, 0, 0, .7);
+        width: 22px;
+        height: 22px;
+        display: block;
+        background-color: #fff;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+      }
+
+      &:active::-webkit-slider-thumb {
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, .6);
+        transition: .4s;
+      }
+    }
+  }
+}
+@media screen and (max-width:1024px) {
+  .App {
+    position: relative;
+
+    .TutorialWrapper {
+      background-color: rgba(0, 0, 0, .5);
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      .Tutorial {
+        background-color: #555;
+        color: #fff;
+        display: block;
+        height: 50%;
+        left: 5%;
+        position: absolute;
+        text-align: center;
+        top: 25%;
+        width: 90%;
+
+        p {
+          font-size: 1.5rem;
+          margin: auto 0;
+
+          .Swipe {
+            animation-delay: .2s;
+            animation-duration: 2s;
+            animation-name: SwipeAnimation;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
+          }
+        }
+
+        @keyframes SwipeAnimation {
+          0% {
+            transform: rotate(45deg);
+          }
+          50% {
+            transform: rotate(-45deg);
+          }
+          100% {
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+
+    .Book {
+      padding: 0;
+
+      .RightPage {
+        display: none;
+      }
+
+      .LeftPage {
+        border: none;
+        border-radius: 0;
+        width: 100%;
+      }
+
+      .Padding {
+        padding: 0;
+      }
+
+      .NextpageButton, .PreviouspageButton {
+        display: none;
+      }
+
+      .TitleSection {
+        border: solid 1px #555;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 10px;
+        overflow-wrap: break-word;
+        width: 100%;
+      }
     }
   }
 }
