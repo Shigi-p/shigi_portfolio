@@ -3,6 +3,9 @@ import Swipe from 'react-easy-swipe';
 import './App.scss';
 import ShigiharaImage from './Image.jpg';
 import Finger from './Finger.svg';
+import VueLogo from './Vue.png';
+import ReactLogo from './React.svg';
+import HTMLLogo from './HTML.svg';
 
 class App extends React.Component{
   constructor(props){
@@ -42,10 +45,10 @@ class App extends React.Component{
             <h1 className="Horizontal TitleSection">目次</h1>
             <div className="Page2Flame1 Flame">
               <ul>
-                <li onClick={() => this.setState({page:3})}>Part1.鴫原俊樹について</li>
-                <li onClick={() => this.setState({page:3})}>Part2.大学での暮らし</li>
-                <li onClick={() => this.setState({page:3})}>Part3.つくったもの</li>
-                <li onClick={() => this.setState({page:3})}>Part4.連絡先</li>
+                <li onClick={() => this.setState({page:3})}><span>1.鴫原俊樹について</span></li>
+                <li onClick={() => this.setState({page:3})}><span>2.大学での暮らし</span></li>
+                <li onClick={() => this.setState({page:3})}><span>3.つくったもの</span></li>
+                <li onClick={() => this.setState({page:3})}><span>4.連絡先</span></li>
               </ul>
             </div>
           </div>
@@ -55,28 +58,89 @@ class App extends React.Component{
           <div className="Page3 Padding Flex">
             <h1 className="Horizontal TitleSection">Part1.鴫原俊樹について</h1>
             <div className="Page3Flame1 Flame">
-              <p>ここに画像を挿入</p>
+              <h1>鴫原俊樹</h1>
               <img src={ShigiharaImage} alt="鴫原俊樹の写真" className="Img"/>
+              <p>会津大学学部3年</p>
+              <p>福島生まれ</p>
+              <p>自転車と漫画が趣味</p>
+              <p>コーヒーとお茶が好き</p>
             </div>
             <div className="Page3Flame2 Flame">
               <ul>
-                <li>会津大学学部3年</li>
-                <li>フロント書きます</li>
+                <li>好きな漫画
+                  <ul>
+                    <li>武装錬金</li>
+                    <li>僕の心のヤバイやつ</li>
+                    <li>恋情デスペラード</li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
         );
       case 4:
         return(
-          <div className="Page4 Padding">
-            <h1>Part2.大学での暮らし</h1>
-            <hr />
-            <p>生きる。</p>
+          <div className="Page4 Padding Flex">
+            <h1 className="Horizontal TitleSection">Part2.大学での暮らし</h1>
+            <div className="Page4Flame1">
+              <div className="Page4Flame1_1 Flame">
+                <h2>学んだ言語とか</h2>
+                <ul>
+                  <li>大学での授業
+                    <ul>
+                      <li>C</li>
+                      <li>Java</li>
+                      <li>C++</li>
+                    </ul>
+                  </li>
+                  <li>個人開発
+                  <ul>
+                    <li>HTML, css</li>
+                    <li>Javascript
+                      <ul>
+                        <li>Vue.js</li>
+                        <li>React.js</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  </li>
+                </ul>
+              </div>
+              <div className="Page4Flame1_2 Flame">
+                <img src={HTMLLogo} alt="HTMLのロゴです" className="Img"/>
+                <img src={ReactLogo} alt="Reactのロゴです" className="Img"/>
+                <img src={VueLogo} alt="Vueのロゴです" className="Img"/>
+              </div>
+            </div>
+            <div className="Page4Flame2 Flame">
+
+            </div>
           </div>
         );
       case 5:
         return(
           <div className="Page5 Padding">
+            <ul>
+              <li><h2>チーム開発経験</h2>
+                <ul>
+                  <li>
+                    <p><h3>大学での授業</h3></p>
+                    <p>
+                      留学生を交えた4〜5人のグループでwebアプリ開発。
+                      英語でのコミュニケーションを通してのチーム開発で、フロントエンドとUIモックアップを担当。
+                      技術的な面の特徴は、nuxtを使用したSPAアプリケーションで、axiosを使用してバックエンドとの通信やnuxt-routerを利用したページ遷移など。
+                    </p>
+                  </li>
+                  <li>
+                    <p><h3>enPiT</h3></p>
+                    <p>
+                      タイのチュラロンコーン大学、モンクット王工科大学、日本大学工学部と協力し、西会津を舞台に地域イノベーションを行った。webアプリ制作では同じくフロントエンド、UIモックアップを担当。
+                    </p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
             <h1>Part3.つくったもの</h1>
             <hr />
             <p>ぶねすと</p>

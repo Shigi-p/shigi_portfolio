@@ -1,5 +1,6 @@
 .App {
   font-family: 'mplus-1p-regular', sans-serif;
+  color: #333;
   .TutorialWrapper {
     display: none;
   }
@@ -13,6 +14,14 @@
     user-select: none;
     width: 100vw;
     writing-mode: vertical-rl;
+
+    ul{
+      list-style: none;
+      padding: 10px 0 0 0;
+      li{
+        padding: 10px 0 0 0;
+      }
+    }
 
     .LeftPage {
       background-color: #fff;
@@ -52,7 +61,22 @@
       margin: 0;
       padding: 10px;
       overflow-wrap: break-word;
+      text-align: center;
       width: 100%;
+    }
+
+    .Circle{
+      border: solid 3px #aaa;
+      border-radius: 50% 50%;
+      height: auto;
+      padding: 40px 10px 10px 10px;
+      width: auto;
+      .CircleText{
+        display: block;
+        height: 100%;
+        margin: 0;
+        width: auto;
+      }
     }
 
     .Flame {
@@ -66,6 +90,7 @@
 
     .Page0 {
       background-color: #555;
+      border-radius: 0 20px 20px 0;
       height: 100%;
       width: 100%;
     }
@@ -76,49 +101,112 @@
     .Page2 {
       .Page2Flame1 {
         list-style: none;
-        margin: 0;
+        height: 100%;
+        margin: 10px 0 10px 0;
         padding: 0;
         width: 100%;
+        span {
+          display: inline-block;
+          margin: 10px;
+          transition: .2s;
+          &:hover {
+            color: #4b9;
+            font-weight: bold;
+            transform: scale(1.05);
+          }
+        }
       }
     }
-
     .Page3 {
       .Page3Flame1 {
+        background-color: #555;
+        color: #fff;
         height: 50%;
         padding: 10px;
-        margin: 10px 0 10px 0;
+        margin: 20px 0 10px 0;
 
         .Img {
+          filter: brightness(120%) grayscale(100%) contrast(110%);
           height: 100%;
+          object-fit: contain;
+          object-position: 50% 50%;
+          transition: .1s;
           width: auto;
+          &:hover{
+            filter: none;
+          }
         }
       }
 
       .Page3Flame2 {
         height: 50%;
+        margin: 10px 0 0 0;
+        padding: 10px;
+        ul{
+          li{
+            margin: 10px;
+          }
+        }
+      }
+    }
+
+    .Page4{
+      .Page4Flame1{
+        height: 50%;
+        box-sizing: border-box;
+        .Page4Flame1_1{
+          padding: 10px;
+          margin: 20px 0 20px 10px;
+          width: 65%;
+          ul {
+            li {
+              //margin: 10px;
+            }
+          }
+        }
+        .Page4Flame1_2{
+          padding: 10px;
+          margin: 20px 10px 20px 0;
+          width: calc(35% - 10px);
+          .Img{
+            filter: grayscale(100%);
+            height: auto;
+            transition: .2s;
+            width: 50%;
+            &:hover{
+              filter: none;
+            }
+          }
+        }
+      }
+      .Page4Flame2{
+        height: 40%;
+        padding: 10px;
+        margin: 10px 0 0 0;
       }
     }
 
     .Page99 {
       background-color: #555;
+      border-radius: 20px 0 0 20px;
       height: 100%;
       width: 100%;
     }
 
     //各ページのcss終わり
     .Bookmark {
-      //background-color: lightblue;
+      background-color: #4b9;
       //height: 300px;
       //left: 100px;
       //position: absolute;
-      //transition: .2s;
+      transition: .2s;
       //top: 20px;
-      //width: 100px;
-      //z-index: 1;
+      width: 100px;
+      z-index: 1;
     }
 
     .Bookmark:hover {
-      //transform: translateY(-10px);
+      transform: translateY(-10px);
     }
 
     .NextpageButton, .PreviouspageButton {
@@ -188,8 +276,9 @@
     }
   }
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1440px) {
   .App {
+    font-size: 0.5rem;
     position: relative;
 
     .TutorialWrapper {
@@ -237,7 +326,7 @@
     }
 
     .Book {
-      padding: 0;
+      padding: 0 0 5vw 0;
 
       .RightPage {
         display: none;
