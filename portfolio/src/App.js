@@ -1,6 +1,13 @@
 import React from 'react';
 import Swipe from 'react-easy-swipe';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+
 import './App.scss';
+
 import ShigiharaImage from './Image.jpg';
 import Finger from './Finger.svg';
 import VueLogo from './Vue.png';
@@ -70,7 +77,7 @@ class App extends React.Component{
                 <li>好きな漫画
                   <ul>
                     <li>武装錬金</li>
-                    <li>僕の心のヤバイやつ</li>
+                    <li>SHY-シャイ-</li>
                     <li>恋情デスペラード</li>
                   </ul>
                 </li>
@@ -220,39 +227,51 @@ class App extends React.Component{
     })
   }
 
-  render(){
-    return (
-      <div className="App">
-          <Swipe
-            onSwipeMove={this.onSwipeMove}
-            onSwipeEnd={this.onSwipeEnd}>
-            {this.bookmark()}
-            {this.state.showTutorial ?
-                <div className="TutorialWrapper" onClick={() => this.closeTutorial()}>
-                  <div className="Tutorial">
-                    <p>左右にスワイプでページ移動！</p>
-                    <p><img src={Finger} alt="ゆび" className="Swipe"/></p>
-                  </div>
-                </div>
-              :
-                null
-            }
-            <div className="Book">
-              <div className="RightPage">
-                {this.pages(this.state.page)}
-                <span className="PreviouspageButton" onClick={() => this.goPreviouspage()} />
-              </div>
-              <div className="LeftPage">
-                <span className="NextpageButton" onClick={() => this.goNextpage()} />
-                {this.pages(this.state.page + 1)}
+  Books(){
+    return(
+      <div>
+        <Swipe
+          onSwipeMove={this.onSwipeMove}
+          onSwipeEnd={this.onSwipeEnd}>
+          {this.bookmark()}
+          {this.state.showTutorial ?
+            <div className="TutorialWrapper" onClick={() => this.closeTutorial()}>
+              <div className="Tutorial">
+                <p>左右にスワイプでページ移動！</p>
+                <p><img src={Finger} alt="ゆび" className="Swipe"/></p>
               </div>
             </div>
-          </Swipe>
+            :
+            null
+          }
+          <div className="Book">
+            <div className="RightPage">
+              {this.pages(this.state.page)}
+              <span className="PreviouspageButton" onClick={() => this.goPreviouspage()} />
+            </div>
+            <div className="LeftPage">
+              <span className="NextpageButton" onClick={() => this.goNextpage()} />
+              {this.pages(this.state.page + 1)}
+            </div>
+          </div>
+        </Swipe>
         <div className="BottomMenubar">
           {this.state.page + 1}
           <input className="InputRange" type="range" value={this.state.page} min="0" max={this.state.maxPage} step="1" onChange={(e) => this.changePage(e.target.value)}/>
           {this.state.page}
         </div>
+      </div>
+    )
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route exact path="/" render={() => this.Books()} />
+          </Switch>
+        </Router>
       </div>
     );
   }
