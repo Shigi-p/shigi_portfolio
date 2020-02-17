@@ -1,19 +1,26 @@
+
+$background: #eee;
+$main: #4dd0e1;
+
 .App {
   font-family: 'mplus-1p-regular', sans-serif;
-  color: #333;
+  color: #555;
+  overflow-x: hidden;
+
   .TutorialWrapper {
     display: none;
   }
 
   .Book {
-    display: block;
+    background-color: $background;
     box-sizing: border-box;
-    height: 100vh;
-    padding: 50px 50px calc(50px + 5vh) 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 80vh;
+    justify-content: center;
     text-orientation: upright;
     user-select: none;
     width: 100vw;
-    writing-mode: vertical-rl;
 
     ul{
       list-style: none;
@@ -25,44 +32,41 @@
 
     .LeftPage {
       background-color: #fff;
-      border: solid 1px #555;
-      border-radius: 20px 0 0 20px;
-      box-shadow: 0 10px 0 0 #ddd;
       box-sizing: border-box;
-      width: 50%;
-      z-index: 10;
+      flex-grow: 1;
+      max-width: 40%;
+      padding: 0 20px 0 0;
+      writing-mode: vertical-rl;
     }
 
     .RightPage {
       background-color: #fff;
-      border: solid 1px #555;
-      border-radius: 0 20px 20px 0;
-      box-shadow: 0 10px 0 0 #ddd;
       box-sizing: border-box;
-      width: 50%;
-      z-index: 11;
+      flex-grow: 1;
+      max-width: 40%;
+      padding: 0 0 0 20px;
+      writing-mode: vertical-rl;
     }
 
     //ここから各ページのcss
     .Padding {
       box-sizing: border-box;
-      padding: 50px;
+      //padding: 50px;
       width: 100%;
     }
 
     .Horizontal {
-      text-orientation: mixed;
+      //text-orientation: mixed;
       writing-mode: horizontal-tb;
     }
 
     .TitleSection {
-      border: solid 1px #555;
+      //border: solid 1px #555;
       box-sizing: border-box;
       margin: 0;
       padding: 10px;
       overflow-wrap: break-word;
       text-align: center;
-      width: 100%;
     }
 
     .Circle{
@@ -71,6 +75,7 @@
       height: auto;
       padding: 40px 10px 10px 10px;
       width: auto;
+
       .CircleText{
         display: block;
         height: 100%;
@@ -80,7 +85,7 @@
     }
 
     .Flame {
-      border: solid 1px #555;
+      border: solid 1px #aaa;
       box-sizing: border-box;
     }
 
@@ -89,8 +94,7 @@
     }
 
     .Page0 {
-      background-color: #555;
-      border-radius: 0 20px 20px 0;
+      background-color: $background;
       height: 100%;
       width: 100%;
     }
@@ -99,96 +103,95 @@
     }
 
     .Page2 {
-      .Page2Flame1 {
-        list-style: none;
-        height: 100%;
-        margin: 10px 0 10px 0;
-        padding: 0;
-        width: 100%;
-        span {
-          display: inline-block;
-          margin: 10px;
-          transition: .2s;
-          &:hover {
-            color: #4b9;
-            font-weight: bold;
-            transform: scale(1.05);
-          }
-        }
-      }
+      //.Page2Flame1 {
+      //  list-style: none;
+      //  height: 100%;
+      //  margin: 10px 0 10px 0;
+      //  padding: 0;
+      //  //width: 100%;
+      //  span {
+      //    display: inline-block;
+      //    margin: 10px;
+      //    transition: .2s;
+      //    &:hover {
+      //      color: #4b9;
+      //      font-weight: bold;
+      //      transform: scale(1.05);
+      //    }
+      //  }
+      //}
     }
     .Page3 {
-      .Page3Flame1 {
-        background-color: #555;
-        color: #fff;
-        height: 50%;
-        padding: 10px;
-        margin: 20px 0 10px 0;
-
-        .Img {
-          filter: brightness(120%) grayscale(100%) contrast(110%);
-          height: 100%;
-          object-fit: contain;
-          object-position: 50% 50%;
-          transition: .1s;
-          width: auto;
-          &:hover{
-            filter: none;
-          }
-        }
-      }
-
-      .Page3Flame2 {
-        height: 50%;
-        margin: 10px 0 0 0;
-        padding: 10px;
-        ul{
-          li{
-            margin: 10px;
-          }
-        }
-      }
+      //.Page3Flame1 {
+      //  background-color: #555;
+      //  color: #fff;
+      //  height: 50%;
+      //  padding: 10px;
+      //  margin: 20px 0 10px 0;
+      //
+      //  .Img {
+      //    filter: brightness(120%) grayscale(100%) contrast(110%);
+      //    height: 100%;
+      //    object-fit: contain;
+      //    object-position: 50% 50%;
+      //    transition: .1s;
+      //    width: auto;
+      //    &:hover{
+      //      filter: none;
+      //    }
+      //  }
+      //}
+      //
+      //.Page3Flame2 {
+      //  height: 50%;
+      //  margin: 10px 0 0 0;
+      //  padding: 10px;
+      //  ul{
+      //    li{
+      //      margin: 10px;
+      //    }
+      //  }
+      //}
     }
 
     .Page4{
-      .Page4Flame1{
-        height: 50%;
-        box-sizing: border-box;
-        .Page4Flame1_1{
-          padding: 10px;
-          margin: 20px 0 20px 10px;
-          width: 65%;
-          ul {
-            li {
-              //margin: 10px;
-            }
-          }
-        }
-        .Page4Flame1_2{
-          padding: 10px;
-          margin: 20px 10px 20px 0;
-          width: calc(35% - 10px);
-          .Img{
-            filter: grayscale(100%);
-            height: auto;
-            transition: .2s;
-            width: 50%;
-            &:hover{
-              filter: none;
-            }
-          }
-        }
-      }
-      .Page4Flame2{
-        height: 40%;
-        padding: 10px;
-        margin: 10px 0 0 0;
-      }
+      //.Page4Flame1{
+      //  height: 50%;
+      //  box-sizing: border-box;
+      //  .Page4Flame1_1{
+      //    padding: 10px;
+      //    margin: 20px 0 20px 10px;
+      //    width: 65%;
+      //    ul {
+      //      li {
+      //        //margin: 10px;
+      //      }
+      //    }
+      //  }
+      //  .Page4Flame1_2{
+      //    padding: 10px;
+      //    margin: 20px 10px 20px 0;
+      //    width: calc(35% - 10px);
+      //    .Img{
+      //      filter: grayscale(100%);
+      //      height: auto;
+      //      transition: .2s;
+      //      width: 50%;
+      //      &:hover{
+      //        filter: none;
+      //      }
+      //    }
+      //  }
+      //}
+      //.Page4Flame2{
+      //  height: 40%;
+      //  padding: 10px;
+      //  margin: 10px 0 0 0;
+      //}
     }
 
     .Page99 {
-      background-color: #555;
-      border-radius: 20px 0 0 20px;
+      background-color: $background;
       height: 100%;
       width: 100%;
     }
@@ -230,13 +233,14 @@
     }
   }
 
+  //ページ送りとかするバー
   .BottomMenubar {
     background-color: #555;
     bottom: 0;
     color: #fff;
     font-size: 2rem;
     height: 5vh;
-    position: fixed;
+    // position: fixed;
     text-align: center;
     width: 100vw;
 
@@ -274,6 +278,10 @@
         transition: .4s;
       }
     }
+  }
+
+  &__information-to-me {
+    padding: 0 10vw;
   }
 }
 @media screen and (max-width:1440px) {
@@ -326,7 +334,6 @@
     }
 
     .Book {
-      padding: 0 0 5vw 0;
 
       .RightPage {
         display: none;
@@ -335,7 +342,8 @@
       .LeftPage {
         border: none;
         border-radius: 0;
-        width: 100%;
+        padding: 0;
+        max-width: 100%;
       }
 
       .Padding {
@@ -355,5 +363,11 @@
         width: 100%;
       }
     }
+  }
+}
+
+.App {
+  .MuiAppBar-colorPrimary {
+    background-color: $main;
   }
 }
