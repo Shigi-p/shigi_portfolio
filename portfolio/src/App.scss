@@ -3,7 +3,7 @@ $background: #eee;
 $main: #4dd0e1;
 
 .App {
-  font-family: 'mplus-1p-regular', sans-serif;
+  font-family: 'M PLUS 1p', sans-serif;
   color: #555;
   overflow-x: hidden;
 
@@ -15,7 +15,7 @@ $main: #4dd0e1;
     background-color: $background;
     box-sizing: border-box;
     display: flex;
-    flex-direction: row-reverse;
+    //flex-direction: row-reverse;
     height: 80vh;
     justify-content: center;
     text-orientation: upright;
@@ -35,8 +35,8 @@ $main: #4dd0e1;
       box-sizing: border-box;
       flex-grow: 1;
       max-width: 40%;
-      padding: 0 20px 0 0;
-      writing-mode: vertical-rl;
+      padding: 0 0 0 20px;
+      // writing-mode: vertical-rl;
     }
 
     .RightPage {
@@ -44,8 +44,8 @@ $main: #4dd0e1;
       box-sizing: border-box;
       flex-grow: 1;
       max-width: 40%;
-      padding: 0 0 0 20px;
-      writing-mode: vertical-rl;
+      padding: 0 20px 0 0;
+      // writing-mode: vertical-rl;
     }
 
     //ここから各ページのcss
@@ -84,10 +84,10 @@ $main: #4dd0e1;
       }
     }
 
-    .Flame {
-      border: solid 1px #aaa;
-      box-sizing: border-box;
-    }
+    //.Flame {
+    //  border: solid 1px #aaa;
+    //  box-sizing: border-box;
+    //}
 
     .Flex {
       display: flex;
@@ -97,97 +97,6 @@ $main: #4dd0e1;
       background-color: $background;
       height: 100%;
       width: 100%;
-    }
-
-    .Page1 {
-    }
-
-    .Page2 {
-      //.Page2Flame1 {
-      //  list-style: none;
-      //  height: 100%;
-      //  margin: 10px 0 10px 0;
-      //  padding: 0;
-      //  //width: 100%;
-      //  span {
-      //    display: inline-block;
-      //    margin: 10px;
-      //    transition: .2s;
-      //    &:hover {
-      //      color: #4b9;
-      //      font-weight: bold;
-      //      transform: scale(1.05);
-      //    }
-      //  }
-      //}
-    }
-    .Page3 {
-      //.Page3Flame1 {
-      //  background-color: #555;
-      //  color: #fff;
-      //  height: 50%;
-      //  padding: 10px;
-      //  margin: 20px 0 10px 0;
-      //
-      //  .Img {
-      //    filter: brightness(120%) grayscale(100%) contrast(110%);
-      //    height: 100%;
-      //    object-fit: contain;
-      //    object-position: 50% 50%;
-      //    transition: .1s;
-      //    width: auto;
-      //    &:hover{
-      //      filter: none;
-      //    }
-      //  }
-      //}
-      //
-      //.Page3Flame2 {
-      //  height: 50%;
-      //  margin: 10px 0 0 0;
-      //  padding: 10px;
-      //  ul{
-      //    li{
-      //      margin: 10px;
-      //    }
-      //  }
-      //}
-    }
-
-    .Page4{
-      //.Page4Flame1{
-      //  height: 50%;
-      //  box-sizing: border-box;
-      //  .Page4Flame1_1{
-      //    padding: 10px;
-      //    margin: 20px 0 20px 10px;
-      //    width: 65%;
-      //    ul {
-      //      li {
-      //        //margin: 10px;
-      //      }
-      //    }
-      //  }
-      //  .Page4Flame1_2{
-      //    padding: 10px;
-      //    margin: 20px 10px 20px 0;
-      //    width: calc(35% - 10px);
-      //    .Img{
-      //      filter: grayscale(100%);
-      //      height: auto;
-      //      transition: .2s;
-      //      width: 50%;
-      //      &:hover{
-      //        filter: none;
-      //      }
-      //    }
-      //  }
-      //}
-      //.Page4Flame2{
-      //  height: 40%;
-      //  padding: 10px;
-      //  margin: 10px 0 0 0;
-      //}
     }
 
     .Page99 {
@@ -240,18 +149,17 @@ $main: #4dd0e1;
     color: #fff;
     font-size: 2rem;
     height: 5vh;
-    // position: fixed;
     text-align: center;
     width: 100vw;
 
     .InputRange[type=range] {
       appearance: none;
-      background-color: #fff;
+      background-color: #aaa;
       border-radius: 6px;
-      height: 5px;
-      transform: rotate(180deg);
+      height: 1px;
+      margin: 0 0 5px 0;
       -webkit-appearance: none;
-      width: 50vw;
+      width: 10vw;
       z-index: 10;
 
       &:focus,
@@ -265,8 +173,8 @@ $main: #4dd0e1;
         cursor: pointer;
         position: relative;
         border: 2px solid rgba(0, 0, 0, .7);
-        width: 22px;
-        height: 22px;
+        width: 15px;
+        height: 15px;
         display: block;
         background-color: #fff;
         border-radius: 50%;
@@ -274,14 +182,10 @@ $main: #4dd0e1;
       }
 
       &:active::-webkit-slider-thumb {
-        box-shadow: 0 0 0 4px rgba(255, 255, 255, .6);
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, .3);
         transition: .4s;
       }
     }
-  }
-
-  &__information-to-me {
-    padding: 0 10vw;
   }
 }
 @media screen and (max-width:1440px) {
@@ -367,7 +271,11 @@ $main: #4dd0e1;
 }
 
 .App {
-  .MuiAppBar-colorPrimary {
-    background-color: $main;
+  .MuiTypography-root{
+    font-family: 'M PLUS 1p', sans-serif;
+  }
+
+  .MuiCard-root {
+    height: 100%;
   }
 }

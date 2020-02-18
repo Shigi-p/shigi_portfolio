@@ -7,6 +7,13 @@ import {
 } from 'react-router-dom';
 import {
   AppBar,
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Grid,
+  MuiThemeProvider,
   Toolbar,
   Typography,
 } from "@material-ui/core"
@@ -18,6 +25,21 @@ import Finger from './Finger.svg';
 import VueLogo from './Vue.png';
 import ReactLogo from './React.svg';
 import HTMLLogo from './HTML.svg';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import cyan from '@material-ui/core/colors/cyan';
+import orange from '@material-ui/core/colors/orange';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: cyan[300]
+    },
+    secondary: {
+      main: orange[300]
+    }
+  },
+});
 
 class App extends React.Component{
   constructor(props){
@@ -72,12 +94,12 @@ class App extends React.Component{
   }
 
   onSwipeMove(position, event) {
-    if(parseInt(position.x, 10) > 50 && !this.state.swipePageValid && this.state.page < this.state.maxPage){
+    if(parseInt(position.x, 10) < -50 && !this.state.swipePageValid && this.state.page < this.state.maxPage){
       this.setState({
         page: this.state.page + 1,
         swipePageValid: true,
       })
-    }else if(parseInt(position.x, 10) < -50 && !this.state.swipePageValid && this.state.page > 0){
+    }else if(parseInt(position.x, 10) > 50 && !this.state.swipePageValid && this.state.page > 0){
       this.setState({
         page: this.state.page - 1,
         swipePageValid: true,
@@ -117,18 +139,17 @@ class App extends React.Component{
           <div className="Book">
             <div className="RightPage" onClick={() => this.goPreviouspage()}>
               {AboutMe(this.state.page)}
-              <span className="PreviouspageButton" onClick={() => this.goPreviouspage()} />
             </div>
             <div className="LeftPage" onClick={() => this.goNextpage()}>
-              <span className="NextpageButton" onClick={() => this.goNextpage()} />
               {AboutMe(this.state.page + 1)}
             </div>
           </div>
         </Swipe>
         <div className="BottomMenubar">
-          {this.state.page + 1}
+          <Typography variant="body1" component="span">
+            {this.state.page + 1}/{this.state.maxPage}
+          </Typography>
           <input className="InputRange" type="range" value={this.state.page} min="0" max={this.state.maxPage} step="1" onChange={(e) => this.changePage(e.target.value)}/>
-          {this.state.page}
         </div>
       </div>
     )
@@ -141,25 +162,68 @@ class App extends React.Component{
   render(){
     console.log(this.theme);
     return (
-      <div className="App">
-        <AppBar position="static" color="primary">
-          <Toolbar>
-            <Typography variant="h6">
-              Portfolio
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Router>
-          <Switch>
-            <Route exact path="/" render={() => this.Books()} />
-          </Switch>
-        </Router>
-        <div className="App__information-to-me">
-          <h2>
-            鴫原俊樹のポートフォリオ
-          </h2>
-        </div>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <Box className="App">
+          <AppBar position="static" color="primary">
+            <Toolbar>
+              <Typography variant="h6">
+                Shigi's Portfolio
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Router>
+            <Switch>
+              <Route exact path="/" render={() => this.Books()} />
+            </Switch>
+          </Router>
+          <Container maxWidth="lg">
+            <Grid container spacing={4}>
+              <Grid item>
+                <Typography paragraph>
+                  次回更新日 未定
+                </Typography>
+                <Typography variant="h3">
+                  鴫原俊樹のポートフォリオ
+                </Typography>
+                <Typography paragraph>
+                  会津大学コンピュータ理工学部コンピュータ理工学科、鴫原俊樹によるポートフォリオサイト！
+                </Typography>
+                <Typography paragraph>
+                  秋田書店のマンガクロスのUIを参考に似たような電子書籍スタイルに！
+                </Typography>
+                <Typography paragraph>
+                  せっかくなので色々な情報を載せていきます！
+                </Typography>
+              </Grid>
+              <Grid item width="30%">
+                <Typography paragraph variant="h3">
+                  僕のイチオシ漫画
+                </Typography>
+                <Box>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Typography paragraph align="center" variant="h6">
+                        武装錬金
+                      </Typography>
+                      <Typography align="center">
+                        全10巻(完結)
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography paragraph align="center" variant="h6">
+                        SHY -シャイ-
+                      </Typography>
+                      <Typography align="center">
+                        全2巻(連載中)
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+      </MuiThemeProvider>
     );
   }
 }
@@ -172,124 +236,114 @@ const AboutMe = (page) => {
         );
       case 1:
         return(
-          <div className="Page1 Padding">
-            <h1 className="Horizontal TitleSection">This is my portfolio.</h1>
-          </div>
+          <Box>
+            <Card>
+              <CardHeader title={
+                <Typography variant="h3" component="h3" align="center" paragraph>
+                  Shigi's portfolio.
+                </Typography>
+              }/>
+              <CardContent>
+                <Typography variant="h4" component="h4" align="center">
+                    第一話
+                </Typography>
+                <Typography variant="h4" component="h4" align="center">
+                  書く、自由に。
+                </Typography>
+              </CardContent>
+            </Card>
+          </Box>
         );
       case 2:
         return(
-          <div className="Page2 Padding Flex">
-            <h1 className="Horizontal TitleSection">目次</h1>
-            {/*<div className="Page2Flame1 Flame">*/}
-            {/*  <ul>*/}
-            {/*    <li onClick={() => this.setState({page:3})}><span>1.鴫原俊樹について</span></li>*/}
-            {/*    <li onClick={() => this.setState({page:3})}><span>2.大学での暮らし</span></li>*/}
-            {/*    <li onClick={() => this.setState({page:3})}><span>3.つくったもの</span></li>*/}
-            {/*    <li onClick={() => this.setState({page:3})}><span>4.連絡先</span></li>*/}
-            {/*  </ul>*/}
-            {/*</div>*/}
-          </div>
+          <Box>
+            <Card>
+              <CardHeader title={
+                <Typography variant="h3" component="h3" align="center" paragraph>
+                  このサイトについて
+                </Typography>
+              }/>
+              <CardContent>
+                <Container maxWidth="lg">
+                  <Typography paragraph>
+                    <Typography component="span" color="secondary"><b>ある男の自己紹介サイト</b></Typography>である。
+                  </Typography>
+                  <Typography paragraph>
+                    ある日、就職活動をしていくにあたり男は考えた。
+                  </Typography>
+                  <Typography paragraph>
+                    「エンジニアとして就活する上では<Typography component="span" color="secondary"><b>成果物が必要</b></Typography>だ」と。
+                  </Typography>
+                  <Typography paragraph>
+                    じゃあ、自分の好きなように作って個性を出していこう！
+                  </Typography>
+                  <Typography paragraph>
+                    …と思いたち、秋田書店のマンガクロスのUIを参考に電子書籍風の自己紹介サイトを作った。
+                  </Typography>
+                  <Typography paragraph>
+                    せっかく電子書籍風にしたので、自由に思ったことを書いていこうと思う。
+                  </Typography>
+                  <Typography paragraph>
+                    漫画風にして真似たのに、横書きなので厳密には漫画になっていないのは秘密。
+                  </Typography>
+                  <Typography paragraph>
+                    だらだらと書き綴るが、読んでいただけると私についてよく理解できるのではないだろうか。
+                  </Typography>
+                  <Typography paragraph>
+                    多分。
+                  </Typography>
+                </Container>
+              </CardContent>
+            </Card>
+          </Box>
         );
       case 3:
         return(
-          <div className="Page3 Padding Flex">
-            <h1 className="Horizontal TitleSection">Part1.鴫原俊樹について</h1>
-            {/*<div className="Page3Flame1 Flame">*/}
-            {/*  <h1>鴫原俊樹</h1>*/}
-            {/*  <img src={ShigiharaImage} alt="鴫原俊樹の写真" className="Img"/>*/}
-            {/*  <p>会津大学学部3年</p>*/}
-            {/*  <p>福島生まれ</p>*/}
-            {/*  <p>自転車と漫画が趣味</p>*/}
-            {/*  <p>コーヒーとお茶が好き</p>*/}
-            {/*</div>*/}
-            {/*<div className="Page3Flame2 Flame">*/}
-            {/*  <ul>*/}
-            {/*    <li>好きな漫画*/}
-            {/*      <ul>*/}
-            {/*        <li>武装錬金</li>*/}
-            {/*        <li>SHY-シャイ-</li>*/}
-            {/*        <li>恋情デスペラード</li>*/}
-            {/*      </ul>*/}
-            {/*    </li>*/}
-            {/*  </ul>*/}
-            {/*</div>*/}
-          </div>
+          <Box>
+            <Card>
+              <CardHeader title={
+                <Typography variant="h3" align="center" paragraph>
+                  鴫原俊樹
+                </Typography>
+              }/>
+              <CardContent>
+                <Container maxWidth="lg">
+                  <Typography paragraph>
+                    会津大学 学部3年 コンピュータ理工学部 コンピュータ理工学科
+                  </Typography>
+                  <Typography paragraph>
+                    漫画、自転車(クロスバイク、メーカーはBianchi)、ラップバトルが好き。
+                  </Typography>
+                  <Typography paragraph>
+                    使用言語は主にJavascript。フレームワークはVueとReact。
+                  </Typography>
+                  <Typography paragraph>
+                    最近はバックエンドの勉強としてLaravelを勉強中。
+                  </Typography>
+                  <Typography paragraph>
+                    触ったことあるだけならRails,Django,Flask,Go,その他色々。
+                  </Typography>
+                </Container>
+              </CardContent>
+            </Card>
+          </Box>
         );
       case 4:
         return(
-          <div className="Page4 Padding Flex">
-            <h1 className="Horizontal TitleSection">Part2.大学での暮らし</h1>
-            {/*<div className="Page4Flame1">*/}
-            {/*  <div className="Page4Flame1_1 Flame">*/}
-            {/*    <h2>学んだ言語とか</h2>*/}
-            {/*    <ul>*/}
-            {/*      <li>大学での授業*/}
-            {/*        <ul>*/}
-            {/*          <li>C</li>*/}
-            {/*          <li>Java</li>*/}
-            {/*          <li>C++</li>*/}
-            {/*        </ul>*/}
-            {/*      </li>*/}
-            {/*      <li>個人開発*/}
-            {/*      <ul>*/}
-            {/*        <li>HTML, css</li>*/}
-            {/*        <li>Javascript*/}
-            {/*          <ul>*/}
-            {/*            <li>Vue.js</li>*/}
-            {/*            <li>React.js</li>*/}
-            {/*          </ul>*/}
-            {/*        </li>*/}
-            {/*      </ul>*/}
-            {/*      </li>*/}
-            {/*    </ul>*/}
-            {/*  </div>*/}
-            {/*  <div className="Page4Flame1_2 Flame">*/}
-            {/*    /!*<img src={HTMLLogo} alt="HTMLのロゴです" className="Img"/>*!/*/}
-            {/*    /!*<img src={ReactLogo} alt="Reactのロゴです" className="Img"/>*!/*/}
-            {/*    /!*<img src={VueLogo} alt="Vueのロゴです" className="Img"/>*!/*/}
-            {/*  </div>*/}
-            {/*</div>*/}
-            {/*<div className="Page4Flame2 Flame">*/}
-
-            {/*</div>*/}
-          </div>
-        );
-      case 5:
-        return(
-          <div className="Page5 Padding">
-            {/*<ul>*/}
-            {/*  <li><h2>チーム開発経験</h2>*/}
-            {/*    <ul>*/}
-            {/*      <li>*/}
-            {/*        <h3>大学での授業</h3>*/}
-            {/*        <p>*/}
-            {/*          留学生を交えた4〜5人のグループでwebアプリ開発。*/}
-            {/*          英語でのコミュニケーションを通してのチーム開発で、フロントエンドとUIモックアップを担当。*/}
-            {/*          技術的な面の特徴は、nuxtを使用したSPAアプリケーションで、axiosを使用してバックエンドとの通信やnuxt-routerを利用したページ遷移など。*/}
-            {/*        </p>*/}
-            {/*      </li>*/}
-            {/*      <li>*/}
-            {/*        <h3>enPiT</h3>*/}
-            {/*        <p>*/}
-            {/*          タイのチュラロンコーン大学、モンクット王工科大学、日本大学工学部と協力し、西会津を舞台に地域イノベーションを行った。webアプリ制作では同じくフロントエンド、UIモックアップを担当。*/}
-            {/*        </p>*/}
-            {/*      </li>*/}
-            {/*    </ul>*/}
-            {/*  </li>*/}
-            {/*</ul>*/}
-
-            {/*<h1>Part3.つくったもの</h1>*/}
-            {/*<hr />*/}
-            {/*<p>ぶねすと</p>*/}
-          </div>
-        );
-      case 6:
-        return(
-          <div className="Page6 Padding">
-            <h1>Part4.連絡先</h1>
-            {/*<hr />*/}
-            {/*<p>ぎっとはぶ</p>*/}
-          </div>
+          <Box>
+            <Card>
+              <CardHeader title={
+                <Typography variant="h3" component="h3" align="center" paragraph>
+                  タイトルだよ
+                </Typography>
+              }/>
+              <CardContent>
+                <Typography paragraph>
+                  このへんに本文を追記
+                </Typography>
+              </CardContent>
+            </Card>
+          </Box>
         );
       default:
         return(
