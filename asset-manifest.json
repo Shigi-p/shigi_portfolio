@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/shigi_portfolio/static/css/main.83737337.chunk.css",
-    "main.js": "/shigi_portfolio/static/js/main.60520da1.chunk.js",
-    "main.js.map": "/shigi_portfolio/static/js/main.60520da1.chunk.js.map",
+    "main.js": "/shigi_portfolio/static/js/main.8f6d09d4.chunk.js",
+    "main.js.map": "/shigi_portfolio/static/js/main.8f6d09d4.chunk.js.map",
     "runtime-main.js": "/shigi_portfolio/static/js/runtime-main.ecc405d8.js",
     "runtime-main.js.map": "/shigi_portfolio/static/js/runtime-main.ecc405d8.js.map",
     "static/js/2.483738fa.chunk.js": "/shigi_portfolio/static/js/2.483738fa.chunk.js",
     "static/js/2.483738fa.chunk.js.map": "/shigi_portfolio/static/js/2.483738fa.chunk.js.map",
     "index.html": "/shigi_portfolio/index.html",
-    "precache-manifest.25f6b56f052b51426364abca77f79ca3.js": "/shigi_portfolio/precache-manifest.25f6b56f052b51426364abca77f79ca3.js",
+    "precache-manifest.32f3719ef10b17aad259d3f4cde2a517.js": "/shigi_portfolio/precache-manifest.32f3719ef10b17aad259d3f4cde2a517.js",
     "service-worker.js": "/shigi_portfolio/service-worker.js",
     "static/css/main.83737337.chunk.css.map": "/shigi_portfolio/static/css/main.83737337.chunk.css.map",
     "static/js/2.483738fa.chunk.js.LICENSE.txt": "/shigi_portfolio/static/js/2.483738fa.chunk.js.LICENSE.txt",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.ecc405d8.js",
     "static/js/2.483738fa.chunk.js",
     "static/css/main.83737337.chunk.css",
-    "static/js/main.60520da1.chunk.js"
+    "static/js/main.8f6d09d4.chunk.js"
   ]
 }
