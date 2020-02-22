@@ -126,7 +126,7 @@ class App extends React.Component{
           {this.state.showTutorial ?
             <div className="TutorialWrapper" onClick={() => this.closeTutorial()}>
               <div className="Tutorial">
-                <p>左右にスワイプでページ移動！</p>
+                <p>左右にスワイプ</p>
                 <p><img src={Finger} alt="ゆび" className="Swipe"/></p>
               </div>
             </div>

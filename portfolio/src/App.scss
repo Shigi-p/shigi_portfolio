@@ -129,7 +129,7 @@ $main: #4dd0e1;
       position: absolute;
       top: 64px;
       width: 50vw;
-      z-index: 100;
+      z-index: 98;
     }
 
     .NextpageButton {
@@ -196,17 +196,21 @@ $main: #4dd0e1;
       height: 100%;
       position: absolute;
       width: 100%;
+      z-index: 99;
 
       .Tutorial {
         background-color: #555;
+        box-sizing: border-box;
         color: #fff;
         display: block;
-        height: 50%;
+        height: auto;
         left: 5%;
+        padding: 15px;
         position: absolute;
         text-align: center;
-        top: 25%;
+        top: 10%;
         width: 90%;
+        z-index: 100;
 
         p {
           font-size: 1.5rem;
