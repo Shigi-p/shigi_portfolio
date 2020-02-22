@@ -8,38 +8,35 @@ import {
 import {
   AppBar,
   Box,
-  Card,
-  CardContent,
-  CardHeader,
   Container,
   Grid,
   MuiThemeProvider,
   Toolbar,
   Typography,
-} from "@material-ui/core"
+  responsiveFontSizes,
+} from "@material-ui/core";
 
+import AboutMe from './pages/AboutMe';
 import './App.scss';
 
-import ShigiharaImage from './Image.jpg';
 import Finger from './Finger.svg';
-import VueLogo from './Vue.png';
-import ReactLogo from './React.svg';
-import HTMLLogo from './HTML.svg';
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import cyan from '@material-ui/core/colors/cyan';
 import orange from '@material-ui/core/colors/orange';
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
     primary: {
-      main: cyan[300]
+      main: cyan[400]
     },
     secondary: {
-      main: orange[300]
+      main: orange[400]
     }
-  },
+  }
 });
+
+theme = responsiveFontSizes(theme);
 
 class App extends React.Component{
   constructor(props){
@@ -143,6 +140,8 @@ class App extends React.Component{
             <div className="LeftPage" onClick={() => this.goNextpage()}>
               {AboutMe(this.state.page + 1)}
             </div>
+            <div onClick={() => this.goPreviouspage()} className="PreviouspageButton"/>
+            <div onClick={() => this.goNextpage()} className="NextpageButton"/>
           </div>
         </Swipe>
         <div className="BottomMenubar">
@@ -227,129 +226,5 @@ class App extends React.Component{
     );
   }
 }
-
-const AboutMe = (page) => {
-    switch(page){
-      case 0:
-        return(
-          <div className="Page0"/>
-        );
-      case 1:
-        return(
-          <Box>
-            <Card>
-              <CardHeader title={
-                <Typography variant="h3" component="h3" align="center" paragraph>
-                  Shigi's portfolio.
-                </Typography>
-              }/>
-              <CardContent>
-                <Typography variant="h4" component="h4" align="center">
-                    第一話
-                </Typography>
-                <Typography variant="h4" component="h4" align="center">
-                  書く、自由に。
-                </Typography>
-              </CardContent>
-            </Card>
-          </Box>
-        );
-      case 2:
-        return(
-          <Box>
-            <Card>
-              <CardHeader title={
-                <Typography variant="h3" component="h3" align="center" paragraph>
-                  このサイトについて
-                </Typography>
-              }/>
-              <CardContent>
-                <Container maxWidth="lg">
-                  <Typography paragraph>
-                    <Typography component="span" color="secondary"><b>ある男の自己紹介サイト</b></Typography>である。
-                  </Typography>
-                  <Typography paragraph>
-                    ある日、就職活動をしていくにあたり男は考えた。
-                  </Typography>
-                  <Typography paragraph>
-                    「エンジニアとして就活する上では<Typography component="span" color="secondary"><b>成果物が必要</b></Typography>だ」と。
-                  </Typography>
-                  <Typography paragraph>
-                    じゃあ、自分の好きなように作って個性を出していこう！
-                  </Typography>
-                  <Typography paragraph>
-                    …と思いたち、秋田書店のマンガクロスのUIを参考に電子書籍風の自己紹介サイトを作った。
-                  </Typography>
-                  <Typography paragraph>
-                    せっかく電子書籍風にしたので、自由に思ったことを書いていこうと思う。
-                  </Typography>
-                  <Typography paragraph>
-                    漫画風にして真似たのに、横書きなので厳密には漫画になっていないのは秘密。
-                  </Typography>
-                  <Typography paragraph>
-                    だらだらと書き綴るが、読んでいただけると私についてよく理解できるのではないだろうか。
-                  </Typography>
-                  <Typography paragraph>
-                    多分。
-                  </Typography>
-                </Container>
-              </CardContent>
-            </Card>
-          </Box>
-        );
-      case 3:
-        return(
-          <Box>
-            <Card>
-              <CardHeader title={
-                <Typography variant="h3" align="center" paragraph>
-                  鴫原俊樹
-                </Typography>
-              }/>
-              <CardContent>
-                <Container maxWidth="lg">
-                  <Typography paragraph>
-                    会津大学 学部3年 コンピュータ理工学部 コンピュータ理工学科
-                  </Typography>
-                  <Typography paragraph>
-                    漫画、自転車(クロスバイク、メーカーはBianchi)、ラップバトルが好き。
-                  </Typography>
-                  <Typography paragraph>
-                    使用言語は主にJavascript。フレームワークはVueとReact。
-                  </Typography>
-                  <Typography paragraph>
-                    最近はバックエンドの勉強としてLaravelを勉強中。
-                  </Typography>
-                  <Typography paragraph>
-                    触ったことあるだけならRails,Django,Flask,Go,その他色々。
-                  </Typography>
-                </Container>
-              </CardContent>
-            </Card>
-          </Box>
-        );
-      case 4:
-        return(
-          <Box>
-            <Card>
-              <CardHeader title={
-                <Typography variant="h3" component="h3" align="center" paragraph>
-                  タイトルだよ
-                </Typography>
-              }/>
-              <CardContent>
-                <Typography paragraph>
-                  このへんに本文を追記
-                </Typography>
-              </CardContent>
-            </Card>
-          </Box>
-        );
-      default:
-        return(
-          <div className="Page99"/>
-        )
-    }
-};
 
 export default App;

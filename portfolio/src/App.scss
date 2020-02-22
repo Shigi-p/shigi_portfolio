@@ -5,7 +5,7 @@ $main: #4dd0e1;
 .App {
   font-family: 'M PLUS 1p', sans-serif;
   color: #555;
-  overflow-x: hidden;
+  overflow: hidden;
 
   .TutorialWrapper {
     display: none;
@@ -122,23 +122,20 @@ $main: #4dd0e1;
     }
 
     .NextpageButton, .PreviouspageButton {
-      background-color: #555;
-      bottom: 25%;
-      display: block;
-      height: 50vh;
-      opacity: .5;
-      top: 25%;
+      display: none;
+      //background-color: rgba(88, 88, 88, .5);
+      height: 80vh;
+      left: 0;
       position: absolute;
-      transition: .2s;
-      width: 30px;
+      top: 64px;
+      width: 50vw;
+      z-index: 100;
     }
 
-    .PreviouspageButton {
-      right: 50px;
-    }
-
-    .NextpageButton:hover, .PreviouspageButton:hover {
-      transform: scale(1.01);
+    .NextpageButton {
+      //background-color: rgba(88, 88, 9, .5);
+      left: unset;
+      right: 0;
     }
   }
 
@@ -188,7 +185,7 @@ $main: #4dd0e1;
     }
   }
 }
-@media screen and (max-width:1440px) {
+@media screen and (max-width:800px) {
   .App {
     font-size: 0.5rem;
     position: relative;
@@ -199,6 +196,7 @@ $main: #4dd0e1;
       height: 100%;
       position: absolute;
       width: 100%;
+
       .Tutorial {
         background-color: #555;
         color: #fff;
@@ -255,7 +253,7 @@ $main: #4dd0e1;
       }
 
       .NextpageButton, .PreviouspageButton {
-        display: none;
+        display: unset;
       }
 
       .TitleSection {
@@ -265,6 +263,42 @@ $main: #4dd0e1;
         padding: 10px;
         overflow-wrap: break-word;
         width: 100%;
+      }
+    }
+
+    .BottomMenubar {
+      height: 10vh;
+
+      .InputRange[type=range] {
+        margin: 0;
+        //-webkit-appearance: none;
+        width: 30vw;
+        vertical-align: center;
+        //z-index: 10;
+
+        &:focus,
+        &:active {
+          outline: none;
+        }
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          cursor: pointer;
+          position: relative;
+          border: 2px solid rgba(0, 0, 0, .7);
+          width: 15px;
+          height: 15px;
+          display: block;
+          background-color: #fff;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+        }
+
+        &:active::-webkit-slider-thumb {
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, .3);
+          transition: .4s;
+        }
       }
     }
   }
