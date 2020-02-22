@@ -121,7 +121,7 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h3" component="h3" align="center" paragraph>
-                タイトルだよ
+                使う技術
               </Typography>
             }/>
             <CardContent>
