@@ -29,11 +29,13 @@ import {
 } from '@material-ui/core/styles';
 import cyan from '@material-ui/core/colors/cyan';
 import orange from '@material-ui/core/colors/orange';
+import grey from '@material-ui/core/colors/grey';
 
 let theme = createMuiTheme({
   palette: {
     primary: {
-      main: cyan[400]
+      main: cyan[400],
+      dark: cyan[900]
     },
     secondary: {
       main: orange[400]
@@ -220,10 +222,11 @@ class App extends React.Component{
         url: "/3"
       },
     ];
+    console.log(theme);
     return (
       <MuiThemeProvider theme={theme}>
         <Box className="App">
-          <AppBar position="static" color="primary">
+          <AppBar position="static" bgcolor="primary">
             <Toolbar>
               <Typography variant="h6">
                 Shigi's Portfolio
@@ -234,7 +237,7 @@ class App extends React.Component{
             <Switch>
               <Route exact path="/" render={() => this.Books(AboutMe)} />
             </Switch>
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" p={2}>
               <Grid container spacing={2}>
                 <Grid item xs={12} md={7}>
                   <Typography paragraph>
@@ -329,6 +332,11 @@ class App extends React.Component{
                 </Grid>
               </Grid>
             </Container>
+            <Box bgcolor="text.secondary" color="background.paper" p={2}>
+              <Typography align="center" variant="body2">
+                <small>&copy; 2020 Toshiki Shigihara</small>
+              </Typography>
+            </Box>
           </Router>
         </Box>
       </MuiThemeProvider>
