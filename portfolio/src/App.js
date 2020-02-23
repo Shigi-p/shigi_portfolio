@@ -3,11 +3,14 @@ import Swipe from 'react-easy-swipe';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Link,
 } from 'react-router-dom';
 import {
   AppBar,
   Box,
+  Card,
+  CardActionArea,
   Container,
   Grid,
   MuiThemeProvider,
@@ -21,7 +24,9 @@ import './App.scss';
 
 import Finger from './Finger.svg';
 
-import { createMuiTheme } from '@material-ui/core/styles';
+import {
+  createMuiTheme
+} from '@material-ui/core/styles';
 import cyan from '@material-ui/core/colors/cyan';
 import orange from '@material-ui/core/colors/orange';
 
@@ -33,7 +38,15 @@ let theme = createMuiTheme({
     secondary: {
       main: orange[400]
     }
-  }
+  },
+  typography: {
+      body1: {
+        fontSize: "defaultStatus",
+        '@media (max-width: 800px)': {
+          fontSize: ".8rem"
+        }
+      }
+    }
 });
 
 theme = responsiveFontSizes(theme);
@@ -116,7 +129,7 @@ class App extends React.Component{
     })
   }
 
-  Books(){
+  Books(Page){
     return(
       <div>
         <Swipe
@@ -135,10 +148,10 @@ class App extends React.Component{
           }
           <div className="Book">
             <div className="RightPage" onClick={() => this.goPreviouspage()}>
-              {AboutMe(this.state.page)}
+              {Page(this.state.page)}
             </div>
             <div className="LeftPage" onClick={() => this.goNextpage()}>
-              {AboutMe(this.state.page + 1)}
+              {Page(this.state.page + 1)}
             </div>
             <div onClick={() => this.goPreviouspage()} className="PreviouspageButton"/>
             <div onClick={() => this.goNextpage()} className="NextpageButton"/>
@@ -153,13 +166,60 @@ class App extends React.Component{
       </div>
     )
   }
-
   componentDidMount(){
 
   }
 
   render(){
-    console.log(this.theme);
+    const comics = [
+      {
+        title: "武装錬金",
+        count: 10,
+        continued: false,
+        img: "https://images-na.ssl-images-amazon.com/images/I/51SG2P7EEVL.jpg"
+      },
+      {
+        title: "SHY -シャイ-",
+        count: 3,
+        continued: true,
+        img: "https://images-na.ssl-images-amazon.com/images/I/81RAeGR8VbL.jpg"
+      },
+      {
+        title: "僕の心のヤバイやつ",
+        count: 2,
+        continued: true,
+        img: "https://images-na.ssl-images-amazon.com/images/I/81mFSP0fc-L.jpg"
+      },
+      // {
+      //   title: "好きな子がめがねを忘れた",
+      //   count: 4,
+      //   continued: true
+      // }
+    ];
+
+    const NumberOfBooks = [
+      {
+        date: "2020/02/23",
+        count: 1,
+        title: "書く、自由に。",
+        img: "https://images-na.ssl-images-amazon.com/images/I/51SG2P7EEVL.jpg",
+        url: "/"
+      },
+      {
+        date: "2020/02/23",
+        count: 2,
+        title: "テスト2",
+        img: "https://images-na.ssl-images-amazon.com/images/I/51SG2P7EEVL.jpg",
+        url: "/2"
+      },
+      {
+        date: "2020/02/23",
+        count: 3,
+        title: "テスト3",
+        img: "https://images-na.ssl-images-amazon.com/images/I/51SG2P7EEVL.jpg",
+        url: "/3"
+      },
+    ];
     return (
       <MuiThemeProvider theme={theme}>
         <Box className="App">
@@ -172,55 +232,104 @@ class App extends React.Component{
           </AppBar>
           <Router>
             <Switch>
-              <Route exact path="/" render={() => this.Books()} />
+              <Route exact path="/" render={() => this.Books(AboutMe)} />
             </Switch>
+            <Container maxWidth="lg">
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={7}>
+                  <Typography paragraph>
+                    次回更新日 未定
+                  </Typography>
+                  <Typography variant="h4" component="h4">
+                    Shigi's Portfolio
+                  </Typography>
+                  <Typography paragraph>
+                    会津大学コンピュータ理工学部コンピュータ理工学科、鴫原俊樹によるポートフォリオサイト！
+                  </Typography>
+                  <Typography paragraph>
+                    秋田書店のマンガクロスのUIを参考に似たような電子書籍スタイルに！
+                  </Typography>
+                  <Typography paragraph>
+                    せっかくなので色々な情報を載せていきます！
+                  </Typography>
+                  <Box>
+                    <Card variant="outlined">
+                      <Grid container>
+                        {NumberOfBooks.map((book) => {
+                          return(
+                            <Grid item xs={12} key={book.title}>
+                              <Card p={2}>
+                                <Link to={book.url} style={{color: "#555", textDecoration: "none"}}>
+                                  <CardActionArea>
+                                    <Box p={2}>
+                                      <Grid container>
+                                          <Grid item xs={2}>
+                                            <img src={book.img} width="100%" height="75px"/>
+                                          </Grid>
+                                        <Grid item xs={10}>
+                                          <Typography variant="body2">
+                                            {book.date}
+                                          </Typography>
+                                          <Typography>
+                                            第{book.count}話
+                                          </Typography>
+                                          <Typography variant="body2">
+                                            {book.title}
+                                          </Typography>
+                                        </Grid>
+                                      </Grid>
+                                    </Box>
+                                  </CardActionArea>
+                                </Link>
+                              </Card>
+                            </Grid>
+                          )
+                        })}
+                      </Grid>
+                    </Card>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={5}>
+                  <Box>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} md={12}>
+                        <Typography paragraph variant="h6" component="h6">
+                          僕のイチオシ漫画
+                        </Typography>
+                      </Grid>
+                      {comics.map((comic) => {
+                        return(
+                          <Grid item xs={4} key={comic.title}>
+                            <Typography paragraph>
+                              {comic.title}
+                            </Typography>
+                            <Typography>
+                              <img src={comic.img} width="100%" height="auto"/>
+                              全{comic.count}巻
+                              {comic.continued ?
+                                <Typography component="span">
+                                  (連載中)
+                                </Typography>
+                                :
+                                <Typography component="span">
+                                  (完結)
+                                </Typography>
+                              }
+                            </Typography>
+                          </Grid>
+                        )
+                      })}
+                    </Grid>
+                  </Box>
+                  <Box>
+                    <Card variant="outlined">
+                      <a className="twitter-timeline" href="https://twitter.com/shigu_p?ref_src=twsrc%5Etfw" height="400px">Tweets by shigu_p</a>
+                    </Card>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Container>
           </Router>
-          <Container maxWidth="lg">
-            <Grid container spacing={4}>
-              <Grid item>
-                <Typography paragraph>
-                  次回更新日 未定
-                </Typography>
-                <Typography variant="h3">
-                  鴫原俊樹のポートフォリオ
-                </Typography>
-                <Typography paragraph>
-                  会津大学コンピュータ理工学部コンピュータ理工学科、鴫原俊樹によるポートフォリオサイト！
-                </Typography>
-                <Typography paragraph>
-                  秋田書店のマンガクロスのUIを参考に似たような電子書籍スタイルに！
-                </Typography>
-                <Typography paragraph>
-                  せっかくなので色々な情報を載せていきます！
-                </Typography>
-              </Grid>
-              <Grid item width="30%">
-                <Typography paragraph variant="h3">
-                  僕のイチオシ漫画
-                </Typography>
-                <Box>
-                  <Grid container spacing={2}>
-                    <Grid item xs={6}>
-                      <Typography paragraph align="center" variant="h6">
-                        武装錬金
-                      </Typography>
-                      <Typography align="center">
-                        全10巻(完結)
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography paragraph align="center" variant="h6">
-                        SHY -シャイ-
-                      </Typography>
-                      <Typography align="center">
-                        全2巻(連載中)
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
         </Box>
       </MuiThemeProvider>
     );

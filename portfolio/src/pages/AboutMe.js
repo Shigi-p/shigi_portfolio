@@ -23,7 +23,7 @@ export default function AboutMe(page){
         <Box style={{height: "100%"}}>
           <Card>
             <CardHeader title={
-              <Typography variant="h3" component="h3" align="center" paragraph>
+              <Typography variant="h4" component="h4" align="center" paragraph>
                 Shigi's portfolio.
               </Typography>
             }/>
@@ -43,7 +43,7 @@ export default function AboutMe(page){
         <Box style={{height: "100%"}}>
           <Card>
             <CardHeader title={
-              <Typography variant="h3" component="h3" align="center" paragraph>
+              <Typography variant="h4" component="h4" align="center" paragraph>
                 このサイトについて
               </Typography>
             }/>
@@ -76,11 +76,13 @@ export default function AboutMe(page){
         <Box style={{height: "100%"}}>
           <Card>
             <CardHeader title={
-              <Typography variant="h3" align="center">
+              <Typography variant="h4" align="center">
                 ある男
               </Typography>
             }/>
-            <CardMedia component="img" image={Shigi} />
+            <Box p={2}>
+              <CardMedia component="img" image={Shigi} />
+            </Box>
           </Card>
         </Box>
       );
@@ -89,7 +91,7 @@ export default function AboutMe(page){
         <Box style={{height: "100%"}}>
           <Card>
             <CardHeader title={
-              <Typography variant="h3" align="center" paragraph>
+              <Typography variant="h4" align="center" paragraph>
                 男は漫画が好きだった
               </Typography>
             }/>
@@ -101,7 +103,7 @@ export default function AboutMe(page){
                   webサイトと漫画。男がすぐに一つのアイデアを思いついた。
                 </Typography>
                 <Typography paragraph color="primary">
-                  電子書籍。
+                  <b>電子書籍。</b>
                 </Typography>
                 <Typography paragraph>
                   電子書籍風味にすることで、他と違ったポートフォリオサイトが出来るのではないかと考えた。
@@ -117,16 +119,52 @@ export default function AboutMe(page){
       );
     case 5:
       return(
-        <Box>
+        <Box style={{height: "100%"}}>
           <Card>
             <CardHeader title={
-              <Typography variant="h3" component="h3" align="center" paragraph>
-                使う技術
+              <Typography variant="h4" component="h4" align="center" paragraph>
+                取り巻く技術
               </Typography>
             }/>
             <CardContent>
               <Typography paragraph>
-                このへんに本文を追記
+                Reactを使っていた男は技術的に新しいことをするため、途中からReact Hooksを取り入れたり、
+                HTML、CSSのコーディング規約について調べたり試行錯誤した。
+                そうして男はポートフォリオサイトを完成させた。
+              </Typography>
+              <Typography paragraph>
+                しかし男は、一つ問題を抱えていた。
+              </Typography>
+              <Typography paragraph>
+                <Typography component="span" color="primary">
+                  <b>男は、本番環境へデプロイするということを経験したことがなかった。</b>
+                </Typography>
+                そのため、友人の協力を得ることにした。
+                そして聞くところによると、Netlifyなるサービスがあるらしい。
+                友人から教えを請い、Netlifyにデプロイすることに成功した。男にとって初めての体験であった。
+              </Typography>
+              <Typography paragraph>
+                男は、苦労するのは嫌いだが、新しい技術を学びたいという意欲があった。
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
+      );
+    case 6:
+      return(
+        <Box style={{height: "100%"}}>
+          <Card>
+            <CardHeader title={
+              <Typography variant="h4" component="h4" align="center" paragraph>
+
+              </Typography>
+            }/>
+            <CardContent>
+              <Typography paragraph>
+                男は会津大学に通う学生だった。
+              </Typography>
+              <Typography paragraph color="primary">
+                <b>名を鴫原俊樹といった。</b>
               </Typography>
             </CardContent>
           </Card>
