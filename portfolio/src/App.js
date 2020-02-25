@@ -105,7 +105,7 @@ class App extends React.Component{
     })
   }
 
-  onSwipeMove(position, event, maxPage) {
+  onSwipeMove(position, maxPage) {
     if(parseInt(position.x, 10) < -50 && !this.state.swipePageValid && this.state.page < maxPage){
       this.setState({
         page: this.state.page + 1,
@@ -135,7 +135,7 @@ class App extends React.Component{
     return(
       <div>
         <Swipe
-          onSwipeMove={this.onSwipeMove(maxPage)}
+          onSwipeMove={(position) => this.onSwipeMove(position, maxPage)}
           onSwipeEnd={this.onSwipeEnd}>
           {this.bookmark()}
           {this.state.showTutorial ?

@@ -24,7 +24,8 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" component="h4" align="center" paragraph>
-                Shigi's portfolio.
+                {/*Shigi's portfolio.*/}
+                作品名
               </Typography>
             }/>
             <CardContent>
@@ -32,7 +33,8 @@ export default function AboutMe(page){
                 第一話
               </Typography>
               <Typography variant="h4" component="h4" align="center">
-                書く、自由に。
+                {/*書く、自由に。*/}
+                タイトル
               </Typography>
             </CardContent>
           </Card>
@@ -44,27 +46,21 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" component="h4" align="center" paragraph>
-                これは何なのか？
+                {/*ポートフォリオサイト、作りました。*/}
+                タイトル
               </Typography>
             }/>
             <CardContent>
               <Container maxWidth="lg">
                 <Typography paragraph>
-                  <Typography component="span" color="primary"><b>自己紹介サイト</b></Typography>である。
-                </Typography>
-                <Typography paragraph>
-                  大学でプログラミングを始めとした技術を学んでいくうちに、男はweb制作の分野に興味を持った。
-                  そうして今、男はエンジニアとして働きたいと考えていた。
-                  しかし、就職活動を始めた男を待ち受けていたのはある事実であった。
-                  「エンジニアは、技術的な成果物があるとよい」
-                  男は驚愕した。
-                  そこで、まずはポートフォリオサイトを作ろうと思い立ったのだ。が。
-                </Typography>
-                <Typography color="primary" paragraph>
-                  <b>男は天邪鬼だった</b>。
-                </Typography>
-                <Typography paragraph>
-                  「どうせ作るなら他と違う雰囲気を醸し出したい」という思いをもった男は、自分の好きなものについて考え始めた。
+                  文章
+                {/*  会津大学に通う学生、Shigiと申します。この度ポートフォリオサイトを作りました。*/}
+                {/*</Typography>*/}
+                {/*<Typography paragraph>*/}
+                {/*  天邪鬼なので、自分のポートフォリオを作る際に「他と違ったものにしたい！」と思ったら電子書籍風になってしましました。*/}
+                {/*</Typography>*/}
+                {/*<Typography paragraph>*/}
+                {/*  自由に文章をごちゃごちゃ書き綴っていこうかと思います。*/}
                 </Typography>
               </Container>
             </CardContent>
@@ -77,12 +73,16 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" align="center">
-                ある男
+                {/*ある男*/}
+                タイトル
               </Typography>
             }/>
-            <Box p={2}>
-              <CardMedia component="img" image={Shigi} />
-            </Box>
+            <Typography paragraph>
+              文章
+            </Typography>
+            {/*<Box p={2}>*/}
+            {/*  <CardMedia component="img" image={Shigi} />*/}
+            {/*</Box>*/}
           </Card>
         </Box>
       );
@@ -92,25 +92,26 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" align="center" paragraph>
-                男は漫画が好きだった
+                {/*男は漫画が好きだった*/}
               </Typography>
             }/>
             <CardContent>
               <Container maxWidth="lg">
                 <Typography paragraph>
-                  それはもう好きだった。男は漫画が大好きで、小さいころから漫画と共に成長してきた。
-                  よって、男は漫画と何か関係づけてポートフォリオサイトが出来ないか考えた。
-                  webサイトと漫画。男がすぐに一つのアイデアを思いついた。
-                </Typography>
-                <Typography paragraph color="primary">
-                  <b>電子書籍。</b>
-                </Typography>
-                <Typography paragraph>
-                  電子書籍風味にすることで、他と違ったポートフォリオサイトが出来るのではないかと考えた。
-                  そう思い立つと、男はすぐに制作に取り掛かった。
-                </Typography>
-                <Typography paragraph>
-                  男はweb制作ではフロントエンドの分野について勉強していたので、早速React.jsを使用してコードを書こうとした。
+                  文章
+                {/*  それはもう好きだった。男は漫画が大好きで、小さいころから漫画と共に成長してきた。*/}
+                {/*  よって、男は漫画と何か関係づけてポートフォリオサイトが出来ないか考えた。*/}
+                {/*  webサイトと漫画。男がすぐに一つのアイデアを思いついた。*/}
+                {/*</Typography>*/}
+                {/*<Typography paragraph color="primary">*/}
+                {/*  <b>電子書籍。</b>*/}
+                {/*</Typography>*/}
+                {/*<Typography paragraph>*/}
+                {/*  電子書籍風味にすることで、他と違ったポートフォリオサイトが出来るのではないかと考えた。*/}
+                {/*  そう思い立つと、男はすぐに制作に取り掛かった。*/}
+                {/*</Typography>*/}
+                {/*<Typography paragraph>*/}
+                {/*  男はweb制作ではフロントエンドの分野について勉強していたので、早速React.jsを使用してコードを書こうとした。*/}
                 </Typography>
               </Container>
             </CardContent>
@@ -123,28 +124,30 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" component="h4" align="center" paragraph>
-                取り巻く技術
+                {/*取り巻く技術*/}
+                タイトル
               </Typography>
             }/>
             <CardContent>
               <Typography paragraph>
-                Reactを使っていた男は技術的に新しいことをするため、途中からReact Hooksを取り入れたり、
-                HTML、CSSのコーディング規約について調べたり試行錯誤した。
-                そうして男はポートフォリオサイトを完成させた。
-              </Typography>
-              <Typography paragraph>
-                しかし男は、一つ問題を抱えていた。
-              </Typography>
-              <Typography paragraph>
-                <Typography component="span" color="primary">
-                  <b>男は、本番環境へデプロイするということを経験したことがなかった。</b>
-                </Typography>
-                そのため、友人の協力を得ることにした。
-                そして聞くところによると、Netlifyなるサービスがあるらしい。
-                友人から教えを請い、Netlifyにデプロイすることに成功した。男にとって初めての体験であった。
-              </Typography>
-              <Typography paragraph>
-                男は、苦労するのは嫌いだが、新しい技術を学びたいという意欲があった。
+                文章
+              {/*  Reactを使っていた男は技術的に新しいことをするため、途中からReact Hooksを取り入れたり、*/}
+              {/*  HTML、CSSのコーディング規約について調べたり試行錯誤した。*/}
+              {/*  そうして男はポートフォリオサイトを完成させた。*/}
+              {/*</Typography>*/}
+              {/*<Typography paragraph>*/}
+              {/*  しかし男は、一つ問題を抱えていた。*/}
+              {/*</Typography>*/}
+              {/*<Typography paragraph>*/}
+              {/*  <Typography component="span" color="primary">*/}
+              {/*    <b>男は、本番環境へデプロイするということを経験したことがなかった。</b>*/}
+              {/*  </Typography>*/}
+              {/*  そのため、友人の協力を得ることにした。*/}
+              {/*  そして聞くところによると、Netlifyなるサービスがあるらしい。*/}
+              {/*  友人から教えを請い、Netlifyにデプロイすることに成功した。男にとって初めての体験であった。*/}
+              {/*</Typography>*/}
+              {/*<Typography paragraph>*/}
+              {/*  男は、苦労するのは嫌いだが、新しい技術を学びたいという意欲があった。*/}
               </Typography>
             </CardContent>
           </Card>
@@ -156,29 +159,31 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" component="h4" align="center" paragraph>
-                男の名は。
+                {/*男の名は。*/}
+                タイトル
               </Typography>
             }/>
             <CardContent>
               <Typography paragraph>
-                男は会津大学に通う学生だった。
-              </Typography>
-              <Typography paragraph color="primary">
-                <b>名を鴫原俊樹といった。</b>
-              </Typography>
-              <Typography paragraph>
-                彼はwebのフロントエンドを中心に勉強していた。
-                彼の通う会津大学はC、Java、C++を中心としたプログラミングや
-                アルゴリズム、基本的なコンピュータアーキテクチャをを学ぶものの、
-                webの講義は少なかった。
-                web制作に興味があった彼は、それらの知識を自分で学ぶしかなかった。
-                友人を巻き込み、先輩の協力を借りながらweb制作を学んでいった。
-              </Typography>
-              <Typography paragraph>
-                始めは何からしていいかわからず、とりあえずHTMLとcssを書いていた。
-                しかし、冷静に考えると動的なページやページ遷移などweb制作に必要なものが揃っていないことに気がついた。
-                そこで彼はjsのフレームワークを勉強しはじめた。
-                Vue.js、React.jsを使えるようになってから、制作できるものの幅が増えた。
+                文章
+              {/*  男は会津大学に通う学生だった。*/}
+              {/*</Typography>*/}
+              {/*<Typography paragraph color="primary">*/}
+              {/*  <b>名を鴫原俊樹といった。</b>*/}
+              {/*</Typography>*/}
+              {/*<Typography paragraph>*/}
+              {/*  彼はwebのフロントエンドを中心に勉強していた。*/}
+              {/*  彼の通う会津大学はC、Java、C++を中心としたプログラミングや*/}
+              {/*  アルゴリズム、基本的なコンピュータアーキテクチャをを学ぶものの、*/}
+              {/*  webの講義は少なかった。*/}
+              {/*  web制作に興味があった彼は、それらの知識を自分で学ぶしかなかった。*/}
+              {/*  友人を巻き込み、先輩の協力を借りながらweb制作を学んでいった。*/}
+              {/*</Typography>*/}
+              {/*<Typography paragraph>*/}
+              {/*  始めは何からしていいかわからず、とりあえずHTMLとcssを書いていた。*/}
+              {/*  しかし、冷静に考えると動的なページやページ遷移などweb制作に必要なものが揃っていないことに気がついた。*/}
+              {/*  そこで彼はjsのフレームワークを勉強しはじめた。*/}
+              {/*  Vue.js、React.jsを使えるようになってから、制作できるものの幅が増えた。*/}
               </Typography>
             </CardContent>
           </Card>
@@ -190,10 +195,11 @@ export default function AboutMe(page){
           <Card>
             <CardContent>
               <Typography paragraph>
-                hogehoge
-              </Typography>
-              <Typography paragraph>
-                hogehoge
+                文章
+              {/*  hogehoge*/}
+              {/*</Typography>*/}
+              {/*<Typography paragraph>*/}
+              {/*  hogehoge*/}
               </Typography>
             </CardContent>
           </Card>
