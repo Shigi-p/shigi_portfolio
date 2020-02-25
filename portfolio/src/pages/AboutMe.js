@@ -44,13 +44,13 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" component="h4" align="center" paragraph>
-                このサイトについて
+                これは何なのか？
               </Typography>
             }/>
             <CardContent>
               <Container maxWidth="lg">
                 <Typography paragraph>
-                  <Typography component="span" color="primary"><b>ある男の自己紹介サイト</b></Typography>である。
+                  <Typography component="span" color="primary"><b>自己紹介サイト</b></Typography>である。
                 </Typography>
                 <Typography paragraph>
                   大学でプログラミングを始めとした技術を学んでいくうちに、男はweb制作の分野に興味を持った。
@@ -156,7 +156,7 @@ export default function AboutMe(page){
           <Card>
             <CardHeader title={
               <Typography variant="h4" component="h4" align="center" paragraph>
-
+                男の名は。
               </Typography>
             }/>
             <CardContent>
@@ -165,6 +165,35 @@ export default function AboutMe(page){
               </Typography>
               <Typography paragraph color="primary">
                 <b>名を鴫原俊樹といった。</b>
+              </Typography>
+              <Typography paragraph>
+                彼はwebのフロントエンドを中心に勉強していた。
+                彼の通う会津大学はC、Java、C++を中心としたプログラミングや
+                アルゴリズム、基本的なコンピュータアーキテクチャをを学ぶものの、
+                webの講義は少なかった。
+                web制作に興味があった彼は、それらの知識を自分で学ぶしかなかった。
+                友人を巻き込み、先輩の協力を借りながらweb制作を学んでいった。
+              </Typography>
+              <Typography paragraph>
+                始めは何からしていいかわからず、とりあえずHTMLとcssを書いていた。
+                しかし、冷静に考えると動的なページやページ遷移などweb制作に必要なものが揃っていないことに気がついた。
+                そこで彼はjsのフレームワークを勉強しはじめた。
+                Vue.js、React.jsを使えるようになってから、制作できるものの幅が増えた。
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
+      );
+    case 7:
+      return(
+        <Box style={{height: "100%"}}>
+          <Card>
+            <CardContent>
+              <Typography paragraph>
+                hogehoge
+              </Typography>
+              <Typography paragraph>
+                hogehoge
               </Typography>
             </CardContent>
           </Card>

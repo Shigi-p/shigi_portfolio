@@ -23,6 +23,7 @@ import AboutMe from './pages/AboutMe';
 import './App.scss';
 
 import Finger from './Finger.svg';
+import Shigi from "./pages/Image.jpg";
 
 import {
   createMuiTheme
@@ -58,7 +59,6 @@ class App extends React.Component{
     super(props);
     this.state ={
       page: 0,
-      maxPage: 9,
       swipePageValid: false,
       showTutorial: true,
     };
@@ -83,8 +83,8 @@ class App extends React.Component{
 
   }
 
-  goNextpage(){
-    if(this.state.page < this.state.maxPage){
+  goNextpage(maxPage){
+    if(this.state.page < maxPage){
       this.setState({
         page: this.state.page + 1,
       });
@@ -105,8 +105,8 @@ class App extends React.Component{
     })
   }
 
-  onSwipeMove(position, event) {
-    if(parseInt(position.x, 10) < -50 && !this.state.swipePageValid && this.state.page < this.state.maxPage){
+  onSwipeMove(position, event, maxPage) {
+    if(parseInt(position.x, 10) < -50 && !this.state.swipePageValid && this.state.page < maxPage){
       this.setState({
         page: this.state.page + 1,
         swipePageValid: true,
@@ -131,18 +131,25 @@ class App extends React.Component{
     })
   }
 
-  Books(Page){
+  Books(Page, maxPage){
     return(
       <div>
         <Swipe
-          onSwipeMove={this.onSwipeMove}
+          onSwipeMove={this.onSwipeMove(maxPage)}
           onSwipeEnd={this.onSwipeEnd}>
           {this.bookmark()}
           {this.state.showTutorial ?
             <div className="TutorialWrapper" onClick={() => this.closeTutorial()}>
               <div className="Tutorial">
-                <p>左右にスワイプ</p>
-                <p><img src={Finger} alt="ゆび" className="Swipe"/></p>
+                <Typography paragraph>
+                  左右にスワイプ
+                </Typography>
+                <Typography paragraph>
+                  <img src={Finger} alt="ゆび" className="Swipe"/>
+                </Typography>
+                <Typography variant="body2" style={{fontSize: "1rem"}}>
+                  画面上をタップで閉じる
+                </Typography>
               </div>
             </div>
             :
@@ -152,18 +159,18 @@ class App extends React.Component{
             <div className="RightPage" onClick={() => this.goPreviouspage()}>
               {Page(this.state.page)}
             </div>
-            <div className="LeftPage" onClick={() => this.goNextpage()}>
+            <div className="LeftPage" onClick={() => this.goNextpage(maxPage)}>
               {Page(this.state.page + 1)}
             </div>
             <div onClick={() => this.goPreviouspage()} className="PreviouspageButton"/>
-            <div onClick={() => this.goNextpage()} className="NextpageButton"/>
+            <div onClick={() => this.goNextpage(maxPage)} className="NextpageButton"/>
           </div>
         </Swipe>
         <div className="BottomMenubar">
           <Typography variant="body1" component="span">
-            {this.state.page + 1}/{this.state.maxPage}
+            {this.state.page + 1}/{maxPage + 1}
           </Typography>
-          <input className="InputRange" type="range" value={this.state.page} min="0" max={this.state.maxPage} step="1" onChange={(e) => this.changePage(e.target.value)}/>
+          <input className="InputRange" type="range" value={this.state.page} min="0" max={maxPage} step="1" onChange={(e) => this.changePage(e.target.value)}/>
         </div>
       </div>
     )
@@ -192,11 +199,6 @@ class App extends React.Component{
         continued: true,
         img: "https://images-na.ssl-images-amazon.com/images/I/81mFSP0fc-L.jpg"
       },
-      // {
-      //   title: "好きな子がめがねを忘れた",
-      //   count: 4,
-      //   continued: true
-      // }
     ];
 
     const NumberOfBooks = [
@@ -204,25 +206,10 @@ class App extends React.Component{
         date: "2020/02/23",
         count: 1,
         title: "書く、自由に。",
-        img: "https://images-na.ssl-images-amazon.com/images/I/51SG2P7EEVL.jpg",
+        img: Shigi,
         url: "/"
       },
-      {
-        date: "2020/02/23",
-        count: 2,
-        title: "テスト2",
-        img: "https://images-na.ssl-images-amazon.com/images/I/51SG2P7EEVL.jpg",
-        url: "/2"
-      },
-      {
-        date: "2020/02/23",
-        count: 3,
-        title: "テスト3",
-        img: "https://images-na.ssl-images-amazon.com/images/I/51SG2P7EEVL.jpg",
-        url: "/3"
-      },
     ];
-    console.log(theme);
     return (
       <MuiThemeProvider theme={theme}>
         <Box className="App">
@@ -235,7 +222,7 @@ class App extends React.Component{
           </AppBar>
           <Router>
             <Switch>
-              <Route exact path="/" render={() => this.Books(AboutMe)} />
+              <Route exact path="/" render={() => this.Books(AboutMe, 7)} />
             </Switch>
             <Container maxWidth="lg" p={2}>
               <Grid container spacing={2}>
@@ -267,7 +254,9 @@ class App extends React.Component{
                                     <Box p={2}>
                                       <Grid container>
                                           <Grid item xs={2}>
-                                            <img src={book.img} width="100%" height="75px"/>
+                                            <Box p={1}>
+                                              <img src={book.img} width="100%" alt={`${book.title}のサムネイル`}/>
+                                            </Box>
                                           </Grid>
                                         <Grid item xs={10}>
                                           <Typography variant="body2">
@@ -334,7 +323,7 @@ class App extends React.Component{
             </Container>
             <Box bgcolor="text.secondary" color="background.paper" p={2}>
               <Typography align="center" variant="body2">
-                <small>&copy; 2020 Toshiki Shigihara</small>
+                2020 Toshiki Shigihara
               </Typography>
             </Box>
           </Router>
